@@ -1,0 +1,113 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title>WrapDapp | Documentation | Royalties</title>
+    <meta name="description" content="Documentation for WrapDapp">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content=""> -->
+
+    <!-- 
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icon.png">
+    -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/png" href="/favicon.png" />
+</head>
+
+<body>
+    <a name="pageTop"></a>
+    <div id="top"><a href="#pageTop">Top</a></div>
+    <!-- -->
+    <div class="page-portion bg-green">
+        <div class="main">
+            <div class="logo"><a href="https://pikle.it"><img src="/logo-black-transparent.png"
+                        style="max-width:240px;height:auto;" alt="WrapDapp" /></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="black-bar">
+        <div class="main"><a href="/">Documentation</a> / <a href="index.html">General
+                Documentation</a> / API
+        </div>
+    </div>
+
+    <div class="page-portion">
+        <div class="main">
+            <h1>Royalties</h1>
+
+            <a name="#q01"></a>
+            <h4>What options do I have when setting royalty
+                payouts?</h4>
+            <div class="border-light">
+                <p>The application allows you to set three levels of royalty payouts before you mint
+                    your NFT (these are locked once the NFT has been minted):</p>
+                <ol>
+                    <li><b>Artist Payout:</b> The percent of the sale the artist receives.</li>
+                    <li><b>Publisher Payout:</b> The percent of the sale the publisher receives.
+                    </li>
+                    <li><b>Contributor Payout:</b> The percent of the sale the contributor pool
+                        receives.</li>
+                </ol>
+
+                <p>For example, if an NFT sells for 1 ETH and you have a 2%-4%-2% split, the artist
+                    will receive 0.02ETH, the publisher 0.4ETH, and all of the contributors will
+                    split the remaining 0.02ETH.</p>
+
+                <p>You can set payout rates before an NFT has been minted from the "Catalog" page of
+                    the app by clicking any song under one of your managed artists.</p>
+            </div>
+
+            <a name="#q02"></a>
+            <h4>How are payouts handled?</h4>
+            <div class="border-light">
+                <p>Presently, all sales go through OpenSea. OpenSea withholds the total royalty
+                    amount plus their own commission at the time of sale. After a brief hold period
+                    (usually around 2 weeks), OpenSea then releases that ETH to your WrapDapp
+                    wallet.
+                </p>
+
+                <p>After receiving your payout, we will email you to inform you of transfer, at
+                    which point it is the Publisher's responsibility to send the artist his/her
+                    share, as well as review all contributor claims against the contributor royalty
+                    pool, and if approved, send those out manually.</p>
+            </div>
+
+            <a name="#q03"></a>
+            <h4>What marketplaces are compatible with WrapDapp NFT
+                royalties?</h4>
+            <div class="border-light">
+                <p>We presently partner with OpenSea for all NFT sales and resales. Please see the
+                    NFT section of the documentation for more information.</p>
+            </div>
+
+            <a name="#q04"></a>
+            <h4>Is WrapDapp compatible with EIP-2981?</h4>
+            <div class="border-light">
+                <p>While we have added <a href="https://eips.ethereum.org/EIPS/eip-2981"
+                        target="_blank">EIP-2981</a> support into our contracts, at the present
+                    time, OpenSea does not support this standard, so all royalties are handled using
+                    the standard OpenSea royalty process.</p>
+            </div>
+        </div>
+    </div>
+    <footer class="clear">
+        <div class="main">
+            &copy; 2023 - WrapDapp is a <a href="http://consensys.net">ConsenSys</a> product.
+        </div>
+    </footer>
+</body>
+
+</html>

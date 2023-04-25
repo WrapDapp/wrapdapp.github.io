@@ -1,0 +1,180 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title>WrapDapp | Documentation | NFTs</title>
+    <meta name="description" content="Documentation for WrapDapp">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content=""> -->
+
+    <!-- 
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icon.png">
+    -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/png" href="/favicon.png" />
+</head>
+
+<body>
+    <a name="pageTop"></a>
+    <div id="top"><a href="#pageTop">Top</a></div>
+    <!-- -->
+    <div class="page-portion bg-green">
+        <div class="main">
+            <div class="logo"><a href="https://pikle.it"><img src="/logo-black-transparent.png"
+                        style="max-width:240px;height:auto;" alt="WrapDapp" /></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="black-bar">
+        <div class="main">
+            <a href="/">Documentation</a> / <a href="index.html">General Documentation</a> / NFTs
+        </div>
+    </div>
+
+    <div class="page-portion">
+        <div class="main">
+            <h1>NFT Drop Campaigns</h1>
+
+            <a name="q01"></a>
+            <h4>How are NFT drop campaigns different from Copyright NFTs?</h4>
+            <div class="border-light">
+                <p>NFT drop campaigns are linked to a song within your catalog. They are different
+                    from our <a href="nfts.html">copyright NFTs</a>, which can only be issued once
+                    per song and include all of your song's copyright information directly in the
+                    NFT's metadata.</p>
+
+                <p>Each song can have multiple NFT drops, whereas you can only have one copyright
+                    NFT per song.</p>
+            </div>
+
+            <a name="q02"></a>
+            <h4>How are NFT images generated?</h4>
+            <div class="border-light">
+                <p>There are two strategies available when setting up a campaign which will
+                    determine how NFT image generated for the campaign look.</p>
+
+                <h5>Fixed Image Campaigns</h5>
+                <p>This is the simpler of the two options. With a fixed image campaign, you will
+                    upload as many images (as components) as you wish. Then, when an NFT is
+                    generative, WrapDapp will randomly select one image from the pool of images
+                    (components). That will then be the NFT's image.</p>
+
+                <h5>Generative Image Campaigns</h5>
+                <p>This is a more complicated version which requires more pre-planning on your
+                    part, but the end results are far more flexible and add much more dynamism
+                    to the final generated NFT images.</p>
+
+                <p><b>Slots:</b> Generated campaigns will select ONE (1) component for each
+                    slot. There are a total of NINE (9) slots available, each of which can have
+                    as many component options as you wish.</p>
+
+                <p><b>Anchor Point:</b> When selecting a component to place within a slot, the
+                    application will anchor the component image to a specific corner of the
+                    slot.</p>
+
+                <p><b>Layers:</b> Layers control where the component is rendered vertically compared
+                    to other components which are also rendered on the final NFT image. Higher
+                    numbered layers appear above lower layered numbers, meaning that a component set
+                    up
+                    to render on layer 3 will appear above one set up to render on layer 1 or 2, but
+                    not layer 4, 5, 6, etc..</p>
+            </div>
+
+            <a name="q05"></a>
+            <h4>What are the dimensions of the final generated NFT image?</h4>
+            <div class="border-light">
+                <p>All NFT images are 900x900 pixels in size (see next question).</p>
+            </div>
+
+            <a name="q06"></a>
+            <h4>What are the dimensions of each slot in the final generated NFT image?</h4>
+            <div class="border-light">
+                <p>Each slot is 300x300 pixels in size. There are THREE (3) columns and THREE (3)
+                    rows. From top left, to bottom right, the slots are numbered 1 to 9.</p>
+
+                <pre>
+                       300px    300px    300px
+                   &uarr;   |--------|--------|--------|
+                   .   |        |        |        | 
+                   .   | Slot 1 | Slot 2 | Slot 3 | 300px
+                   .   |        |        |        |
+                   9   |--------|--------|--------|
+                   0   |        |        |        |
+                   0   | Slot 4 | Slot 5 | Slot 6 | 300px
+                   p   |        |        |        |
+                   x   |--------|--------|--------|
+                   .   |        |        |        |
+                   .   | Slot 7 | Slot 8 | Slot 9 | 300px
+                   .   |        |        |        |
+                   &darr;   |--------|--------|--------|
+
+                       &larr; .........900px.......... &rarr;
+                </pre>
+            </div>
+
+            <a name="q03"></a>
+            <h4>Why are NFTs not immediately minted when I
+                generate one?</h4>
+            <div class="border-light">
+                <p>The "minting" process is a two step process. The first step involved generating
+                    the NFT image and adding all of the NFT's information into the WrapDapp
+                    database.
+                </p>
+
+                <p>Once that is completed, the NFT is queued at the end of the line with all other
+                    NFTs which are waiting to be minted. Out application mints NFTs against the
+                    blockchain in batches.</p>
+
+                <p>Depending on NFT minting volume, this process can take between 30 seconds and
+                    several hours to complete.</p>
+            </div>
+
+            <a name="q04"></a>
+            <h4>Why can't I change a campaign after an NFT has
+                been issued?</h4>
+            <div class="border-light">
+                <p>Once an NFT has been generated for a campaign, WrapDapp will lock your ability to
+                    make changes to the campaign other than to deactive the campaign. We do this to
+                    ensure that all NFTs are generated under the same conditions, ensuring that all
+                    NFTs are generated on an even playing field.</p>
+            </div>
+
+            <a name="q07"></a>
+            <h4>What standard is used and on which blockchain
+                are NFT drops minted on?</h4>
+            <div class="border-light">
+                <p>Every NFT drop campaign gets a dedicated ERC-1155 contract deployed to the
+                    <b>POLYGON</b> network.</b> The contract will be deployed to the blockchain when
+                    you activate the campaign from your WrapDapp dashboard.
+                </p>
+            </div>
+
+            <a name="q08"></a>
+            <h4>Can I issue my drop campaign on a blockchain other than Polygon?</h4>
+            <div class="border-light">
+                <p>Yes, however this isn't a standard feature. Please contact us directly for more
+                    information on how to release your NFT drop campaign on a different network.</p>
+            </div>
+        </div>
+    </div>
+    <footer class="clear">
+        <div class="main">
+            &copy; 2023 - WrapDapp is a <a href="http://consensys.net">ConsenSys</a> product.
+        </div>
+    </footer>
+</body>
+
+</html>
