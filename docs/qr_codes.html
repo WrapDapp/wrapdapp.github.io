@@ -1,0 +1,218 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title>WrapDapp | Documentation | QR Codes on NFT Drops</title>
+    <meta name="description" content="Documentation for WrapDapp">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content=""> -->
+
+    <!-- 
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icon.png">
+    -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sintony&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/png" href="/favicon.png" />
+</head>
+
+<body>
+    <a name="pageTop"></a>
+    <div id="top"><a href="#pageTop">Top</a></div>
+    <!-- -->
+    <div class="page-portion bg-green">
+        <div class="main">
+            <div class="logo"><a href="https://pikle.it"><img src="/logo-black-transparent.png"
+                        style="max-width:240px;height:auto;" alt="WrapDapp" /></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="black-bar">
+        <div class="main">
+            <a href="/">Documentation</a> / <a href="index.html">General Documentation</a> / QR
+            Codes on NFT Drops
+        </div>
+    </div>
+
+    <div class="page-portion">
+        <div class="main">
+            <h1>QR Codes on NFT Drops</h1>
+
+            <a name="q01"></a>
+            <h4>How do QR codes work with Wrapdapp
+                NFT drops?</h4>
+            <div class="border-light">
+                <p>When creating a NFT drop for a song, select the "Generative" campaign type. Next,
+                    when creating a component for the campaign, select "QR Code" for the "Type" of
+                    drop. You will be presented with multiple options:</p>
+
+                <ul>
+                    <li><b>Redirect URL:</b> This is where you would like to redirect users to after
+                        they've scanned the QR code.</li>
+                    <li><b>Width:</b> How wide the QR code should appear (in pixels) on the final
+                        NFT image. Remember that NFT images are 900x900 pixels, and each cell is
+                        300x300, meaning you should rarely go above 300 pixels.</li>
+                    <li><b>Link Type:</b> Secure links require that the person scanning the QR prove
+                        ownership via their crypto wallet, such as Metamask. This is ideal for
+                        tickets, special offers, rewards, etc.. Public links can be scanned by
+                        anyone without proving ownership over the NFT.</li>
+                    <li><b>Background Color:</b> The color on which the QR code pattern will be
+                        placed. Note: selecting "Transparent" can cause issues with some
+                        backgrounds, so we recommend using a solid color most of the time.</li>
+                    <li><b>Foreground Color:</b> The color which will make up the QR Code pattern
+                        itself.</li>
+                </ul>
+            </div>
+
+            <a name="q02"></a>
+            <h4>What is the difference between a
+                "Secure" and an "Public" link for a QR code?</h4>
+            <div class="border-light">
+                <h5>Public Link</h5>
+                <p>When the QR code is scanned, we will not confirm that the user scanning the QR
+                    code owns the NFT on which it was scanned. The user will be redirected straight
+                    to the Redirect URL assigned to the QR code. This should only be used for public
+                    websites that anyone can visit, such as promotional pages and marketing pages.
+                </p>
+
+                <h5>Secure Link</h5>
+                <p>Unlike a Public link, a secure link requires an additional two steps. First, when
+                    the user scans the QR code, they will be prompted to prove ownership over the
+                    NFT via a signing request from their wallet.</p>
+
+                <p>Once confirmed, WrapDapp's API will log the click and issue a confirmation code
+                    associated with the signed click. You can then use that confirmation code to
+                    ensure that the user scanning the QR code is the appropriate user.</p>
+
+                <p>Please see the next question for more details on how this flow works.</p>
+            </div>
+
+            <a name="q03"></a>
+            <h4>How do secure QR codes work and how
+                can I ensure that the correct user scanned the
+                code?</h4>
+            <div class="border-light">
+                <p>For this example, we will assume that your redirect url is
+                    <code>https://yoursite.com/myInternalValidationScript.php</code>, meaning that
+                    the user will be redirected here upon a successful QR code scanning.
+                </p>
+
+                <h5>User Scans the Secure QR Code</h5>
+
+                <p>When the secure QR code is scanned by a user, that user will be prompted to prove
+                    that
+                    they own the
+                    NFT. They do this by signing a request using their crypto
+                    wallet.</p>
+
+                <h5>Validating Ownership of the NFT</h5>
+
+                <p>Once ownership has been confirmed, WrapDapp will redirect the user to the
+                    "Redirect URL", however it will add two additional query string components which
+                    you can use with the <code
+                        class="withSpan"><span>GET</span>/qr/{nftId}/{confirmationCode}/confirm</code>
+                    API endpoint
+                    to confirm that the scan is valid. These
+                    query string components are:</p>
+
+                <ul>
+                    <li><code>_wdcc</code>: The confirmation code
+                        proving that the person who scanned the QR code owns the NFT. This replaces
+                        <b>{confirmationCode}</b> in the above URL. For this example, we will assume
+                        the confirmation code is <b>ABC123</b>.
+                    </li>
+                    <li><code>_wcnid</code>: The NFT ID. This is used
+                        in the above URL to replace <b>{nftId}</b>. For this example we will assume
+                        the NFT's ID is <b>xxx-yyy-ccc</b>.</li>
+                </ul>
+
+                <p>In the above scenario, the user will be redirected to:
+                    <code>https://yoursite.com/myInternalValidationScript.php?_wdcc=ABC123&_wcnid=xxx-yyy-ccc</code>
+                </p>
+
+                <h5>Validating the Confirmation Code</h5>
+
+                <p>Now, from your <b>myInternalValidationScript.php</b> page, you can make one more
+                    a request to WrapDapp's APIs at <code
+                        class="withSpan"><span>GET</span>/qr/xxx-yyy-ccc/ABC123/confirm</code>. If
+                    confirmed, the WrapDapp API will return the campaign information and a list of
+                    all components on the scanned NFT.
+                </p>
+
+                <p>Please see the next question and the API documentation for more information.</p>
+            </div>
+
+            <a name="q04"></a>
+            <h4>How do I add QR codes to my
+                generated NFTs?</h4>
+            <div class="border-light">
+                <p>When creating a component for your campaign, simply select "QR Code" for "Type"
+                    and follow the onscreen prompts. QR codes work the same as any generated
+                    component and will be rendered directly on your final NFT image, so make sure
+                    that you place them on the highest layer!</p>
+            </div>
+
+            <a name="q05"></a>
+            <h4>Can I have different QR codes with
+                different links on generated NFTs?</h4>
+            <div class="border-light">
+                <p>Yes, a single component can have multiple QR code options. One common use case is
+                    the idea of using NFTs as a "sweepstakes": by creating multiple QR code
+                    components and having them render in the same quadrant on the NFT image,
+                    WrapDapp's servers will randomly select one of the options based on their
+                    rarity. This allows you to mix simple "public" links with "secure" links which
+                    can hold prizes, rewards, and more.</p>
+            </div>
+
+            <a name="q06"></a>
+            <h4>Can I connect my QR code to my
+                internal systems?</h4>
+            <div class="border-light">
+                <p>Absolutely! Once a QR code has been scanned, we redirect the user to the
+                    "Redirect URL" your specified when setting up the QR Code component for the NFT.
+                    This means that you can link the user directly to a page on your website which
+                    does internal business logic against the request.</p>
+
+                <p>Please see "How do secure QR codes work and how can I ensure that the correct
+                    user scanned the code?" for more information on how you can ensure that QR code
+                    scans are safe and reliable, especially if you are offering something of value.
+                </p>
+
+                <p>One common use case involves adding a "Secure" QR code link, which after
+                    validation returns a list of components on the user's NFT, which allows you to
+                    offer prizes/rewards based on the components that were rendered on the user's
+                    final NFT.</p>
+            </div>
+
+            <a name="q07"></a>
+            <h4>Does WrapDapp give me a way of
+                determining which components were on an NFT that got
+                QR code-scanned?</h4>
+            <div class="border-light">
+                <p>Yes! When you confirm a secure link click, WrapDapp's APIs will return all of the
+                    campaign's information, as well as an array of all components that were rendered
+                    onto the user's scanned NFT.</p>
+
+                <p>Please see API documentation under "QR Codes" for more information.</p>
+            </div>
+        </div>
+    </div>
+    <footer class="clear">
+        <div class="main">
+            &copy; 2023 - WrapDapp is a <a href="http://consensys.net">ConsenSys</a> product.
+        </div>
+    </footer>
+</body>
+
+</html>
